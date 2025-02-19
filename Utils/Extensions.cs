@@ -1,3 +1,7 @@
+using Microsoft.Extensions.Caching.Distributed;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace U.Utils;
 
 public static class StringExtension {
@@ -33,15 +37,4 @@ public static class EnumerableExtension {
 	public static bool IsNotNull<T>(this IEnumerable<T>? list) => list != null;
 
 	public static bool IsNullOrEmpty<T>(this IEnumerable<T>? list) => list == null || list.Any();
-
-	public static async Task<GenericResponse<IQueryable<T>>> Paginate<T>(this IQueryable<T> q, BaseFilterDto dto) where T : BaseEntity {
-		int totalCount = await q.CountAsync();
-		q = q.Skip((dto.PageNumber - 1) * dto.PageSize).Take(dto.PageSize).AsNoTracking();
-
-		return new GenericResponse<IQueryable<T>>(q) {
-			TotalCount = totalCount,
-			PageCount = totalCount % dto.PageSize == 0 ? totalCount / dto.PageSize : totalCount / dto.PageSize + 1,
-			PageSize = dto.PageSize
-		};
-	}
 }
