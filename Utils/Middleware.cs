@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+
 namespace U.Utils;
 
 public class ApiKeyMiddleware(RequestDelegate next, IConfiguration configuration) {

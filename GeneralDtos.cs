@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace U;
 
 public class IdDto {
