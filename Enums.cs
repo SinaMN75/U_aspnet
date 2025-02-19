@@ -3,12 +3,14 @@ namespace U;
 public enum UtilitiesStatusCodes {
 	Success = 200,
 	Created = 201,
+	Deleted = 211,
+	
 	BadRequest = 400,
 	UnAuthorized = 401,
 	Forbidden = 403,
 	NotFound = 404,
 	Conflict = 409,
-	Unhandled = 900,
+	
 	WrongVerificationCode = 601,
 	MaximumLimitReached = 602,
 	UserAlreadyExist = 603,
@@ -25,5 +27,7 @@ public enum UtilitiesStatusCodes {
 	MoreThanAllowedMoney = 616,
 	WrongPassword = 617,
 	InvalidDiscountCode = 618,
-	S3Error = 619
+	S3Error = 619,
+	
+	Unhandled = 999,
 }
