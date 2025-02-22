@@ -25,7 +25,7 @@ public class BaseFilterDto {
 }
 
 public class GenericResponse<T> : GenericResponse {
-	public GenericResponse(T result, UtilitiesStatusCodes status = UtilitiesStatusCodes.Success, string message = "") {
+	public GenericResponse(T result, UStatusCodes status = UStatusCodes.Success, string message = "") {
 		Result = result;
 		Status = status;
 		Message = message;
@@ -34,8 +34,8 @@ public class GenericResponse<T> : GenericResponse {
 	public T? Result { get; }
 }
 
-public class GenericResponse(UtilitiesStatusCodes status = UtilitiesStatusCodes.Success, string message = "") {
-	public UtilitiesStatusCodes Status { get; protected set; } = status;
+public class GenericResponse(UStatusCodes status = UStatusCodes.Success, string message = "") {
+	public UStatusCodes Status { get; protected set; } = status;
 	public int? PageSize { get; set; }
 	public int? PageCount { get; set; }
 	public int? TotalCount { get; set; }

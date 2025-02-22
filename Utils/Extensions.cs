@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -22,12 +23,13 @@ public static class Core {
 }
 
 public static class EnumExtension {
-	public static IEnumerable<IdTitleDto> GetValues<T>() => (from int itemType in Enum.GetValues(typeof(T))
-		select new IdTitleDto { Title = Enum.GetName(typeof(T), itemType), Id = itemType }).ToList();
+	public static IEnumerable<IdTitleDto> GetValues<T>() =>
+		(from int itemType in Enum.GetValues(typeof(T))
+			select new IdTitleDto { Title = Enum.GetName(typeof(T), itemType), Id = itemType }).ToList();
 }
 
 public static class UtilitiesStatusCodesExtension {
-	public static int Value(this UtilitiesStatusCodes statusCode) => (int)statusCode;
+	public static int Value(this UStatusCodes statusCode) => (int)statusCode;
 }
 
 public static class EnumerableExtension {
@@ -36,4 +38,8 @@ public static class EnumerableExtension {
 	public static bool IsNotNull<T>(this IEnumerable<T>? list) => list != null;
 
 	public static bool IsNullOrEmpty<T>(this IEnumerable<T>? list) => list == null || list.Any();
+}
+
+public static class GenericResponseExtensions {
+	public static IResult ToResult(this GenericResponse response) => TypedResults.Json(response, statusCode: response.Status.Value());
 }

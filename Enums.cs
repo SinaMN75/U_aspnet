@@ -1,6 +1,6 @@
 namespace U;
 
-public enum UtilitiesStatusCodes {
+public enum UStatusCodes {
 	Success = 200,
 	Created = 201,
 	Deleted = 211,
