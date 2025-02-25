@@ -24,10 +24,18 @@ public static class SwaggerSetup {
 				In = ParameterLocation.Header,
 				Type = SecuritySchemeType.ApiKey
 			});
+			
+			c.AddSecurityDefinition("locale", new OpenApiSecurityScheme {
+				Description = "Locale",
+				Name = "locale",
+				In = ParameterLocation.Header,
+				Type = SecuritySchemeType.Http
+			});
 
 			c.AddSecurityRequirement(new OpenApiSecurityRequirement {
 				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } }, Array.Empty<string>() },
-				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "apiKey" } }, Array.Empty<string>() }
+				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "apiKey" } }, Array.Empty<string>() },
+				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.Header, Id = "locale" } }, Array.Empty<string>() }
 			});
 		});
 	}
