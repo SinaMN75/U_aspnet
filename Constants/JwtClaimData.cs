@@ -7,6 +7,9 @@ public class JwtClaimData {
 	public string? FirstName { get; set; }
 	public string? LastName { get; set; }
 	public string? FullName { get; set; }
-	public DateTime? Expiration { get; set; }
 	public string? Tags { get; set; }
+	public DateTime? Expiration { get; set; }
+	public bool IsExpired => Expiration.HasValue && Expiration.Value < DateTime.UtcNow;
+	public string TagsString => string.Join(", ", (Tags ?? "").Select(x => (int)x).ToList());
+	public List<TagUser> TagsList => TagsString.Select(i => (TagUser)i).ToList();
 }

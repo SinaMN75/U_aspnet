@@ -5,7 +5,6 @@ namespace U.Data.Params.UserManagement;
 public class UserUpdateParams : BaseParam {
 	public required Guid Id { get; set; }
 	public string? Password { get; set; }
-	public string? RefreshToken { get; set; }
 	public string? FirstName { get; set; }
 	public string? LastName { get; set; }
 	public string? Subtitle { get; set; }
