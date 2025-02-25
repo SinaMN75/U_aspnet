@@ -24,22 +24,20 @@ public static class SwaggerSetup {
 				In = ParameterLocation.Header,
 				Type = SecuritySchemeType.ApiKey
 			});
-			
 			c.AddSecurityDefinition("locale", new OpenApiSecurityScheme {
 				Description = "Locale",
-				Name = "locale",
+				Name = "Locale",
 				In = ParameterLocation.Header,
-				Type = SecuritySchemeType.Http
+				Type = SecuritySchemeType.ApiKey
 			});
-
 			c.AddSecurityRequirement(new OpenApiSecurityRequirement {
 				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } }, Array.Empty<string>() },
 				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "apiKey" } }, Array.Empty<string>() },
-				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.Header, Id = "locale" } }, Array.Empty<string>() }
+				{ new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "locale" } }, Array.Empty<string>() }
 			});
 		});
 	}
-	
+
 	public static void UseUSwagger(this IApplicationBuilder app) {
 		app.UseSwagger();
 		app.UseSwaggerUI(c => {
