@@ -22,7 +22,7 @@ public static class AspNetConfig {
 		builder.WebHost.ConfigureKestrel(o => o.ConfigureEndpointDefaults(e => e.Protocols = HttpProtocols.Http2));
 		builder.Services.AddCors(c => c.AddPolicy("AllowOrigin", option => option.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 		builder.Services.AddOpenApi();
-		builder.AddUtilitiesSwagger();
+		builder.AddUSwagger();
 		builder.Services.AddHttpContextAccessor();
 		builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 		builder.Services.ConfigureHttpJsonOptions(options => {
@@ -50,13 +50,13 @@ public static class AspNetConfig {
 	}
 
 
-	public static void UseUtilitiesServices(this WebApplication app, bool log = false) {
+	public static void UseUServices(this WebApplication app, bool log = false) {
 		app.UseCors(o => o.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 		app.UseResponseCompression();
 		app.UseDeveloperExceptionPage();
 		app.MapOpenApi();
 		app.MapScalarApiReference();
-		app.UseUtilitiesSwagger();
+		app.UseUSwagger();
 		app.UseHttpsRedirection();
 		app.UseRateLimiter();
 	}

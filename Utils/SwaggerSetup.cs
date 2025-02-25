@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 namespace U.Utils;
 
 public static class SwaggerSetup {
-	public static void AddUtilitiesSwagger(this WebApplicationBuilder builder) {
+	public static void AddUSwagger(this WebApplicationBuilder builder) {
 		builder.Services.AddEndpointsApiExplorer();
 		builder.Services.AddSwaggerGen(c => {
 			c.UseInlineDefinitionsForEnums();
@@ -32,7 +32,7 @@ public static class SwaggerSetup {
 		});
 	}
 	
-	public static void UseUtilitiesSwagger(this IApplicationBuilder app) {
+	public static void UseUSwagger(this IApplicationBuilder app) {
 		app.UseSwagger();
 		app.UseSwaggerUI(c => {
 			c.DocExpansion(DocExpansion.None);
