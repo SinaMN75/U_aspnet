@@ -2,6 +2,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace U;
 
+public class BaseEntity {
+	[Key]
+	public required Guid Id { get; set; }
+
+	public required DateTime CreatedAt { get; set; }
+	public required DateTime UpdatedAt { get; set; }
+}
+
 public class IdDto {
 	public required Guid Id { get; set; }
 }
@@ -11,17 +19,14 @@ public class IdTitleDto {
 	public string? Title { get; set; }
 }
 
-public class BaseEntity {
-	[Key]
-	public required Guid Id { get; set; }
-	public required DateTime CreatedAt { get; set; }
-	public required DateTime UpdatedAt { get; set; }
-}
-
 public class BaseFilterDto {
 	public int PageSize { get; set; } = 100;
 	public int PageNumber { get; set; } = 1;
 	public DateTime? FromDate { get; set; }
+}
+
+public class BaseParam {
+	public string? Token { get; set; }
 }
 
 public class GenericResponse<T> : GenericResponse {
