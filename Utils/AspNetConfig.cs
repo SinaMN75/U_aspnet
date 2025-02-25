@@ -42,6 +42,7 @@ public static class AspNetConfig {
 				})));
 
 		builder.Services.AddResponseCompression(o => o.EnableForHttps = true);
+		builder.Services.AddScoped<DbContext, T>();
 		builder.Services.AddDbContextPool<T>(b => b.UseNpgsql(builder.Configuration.GetConnectionString("ServerPostgres"), o => {
 			AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 			o.EnableRetryOnFailure(2);
