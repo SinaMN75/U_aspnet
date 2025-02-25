@@ -1,12 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 using System.Diagnostics;
 
 namespace U.Utils;
 
 public class Server {
 	private static IHttpContextAccessor? _httpContextAccessor;
-
 	private static string? _serverAddress;
+
+	public static void Configure(IHttpContextAccessor? accessor) => _httpContextAccessor = accessor;
+
+
+	public string GetAppLanguage(string headerName) {
+		HttpContext? httpContext = _httpContextAccessor?.HttpContext;
+		if (httpContext == null) return "en";
+		if (!httpContext.Request.Headers.TryGetValue(headerName, out StringValues headerValue)) return "en";
+		return StringValues.IsNullOrEmpty(headerValue) ? "en" : headerValue.ToString();
+	}
 
 	public static string ServerAddress {
 		get {
@@ -16,8 +26,6 @@ public class Server {
 			return _serverAddress;
 		}
 	}
-
-	public static void Configure(IHttpContextAccessor? httpContextAccessor) => _httpContextAccessor = httpContextAccessor;
 
 	public static async Task RunCommand(string command, string args) {
 		Console.WriteLine("COMMAND Started");

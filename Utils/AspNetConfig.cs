@@ -24,6 +24,7 @@ public static class AspNetConfig {
 		builder.Services.AddOpenApi();
 		builder.AddUSwagger();
 		builder.Services.AddHttpContextAccessor();
+		Server.Configure(builder.Services.BuildServiceProvider().GetService<IServiceProvider>()?.GetService<IHttpContextAccessor>());
 		builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 		builder.Services.ConfigureHttpJsonOptions(options => {
 			options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
