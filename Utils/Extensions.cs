@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 
 namespace U.Utils;
 
@@ -12,6 +13,8 @@ public static class StringExtension {
 	public static bool IsNullOrEmpty(this string? s) => string.IsNullOrEmpty(s);
 
 	public static bool IsNull(this string? s) => s == null;
+
+	public static bool IsValidEmail(this string email) => !string.IsNullOrWhiteSpace(email) && Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
 }
 
 public static class Core {
