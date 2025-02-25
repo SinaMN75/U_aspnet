@@ -14,6 +14,8 @@ public static class StringExtension {
 
 	public static bool IsNull(this string? s) => s == null;
 
+	public static bool MinMaxLenght(this string? s, int min, int max) => s.IsNotNull() && s!.Length < min && s.Length > max;
+
 	public static bool IsEmail(this string email) => !string.IsNullOrWhiteSpace(email) && Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
 }
 
