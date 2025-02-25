@@ -11,7 +11,7 @@ public class Server {
 	public static void Configure(IHttpContextAccessor? accessor) => _httpContextAccessor = accessor;
 
 
-	public string GetAppLanguage(string headerName) {
+	public static string GetAppLanguage(string headerName) {
 		HttpContext? httpContext = _httpContextAccessor?.HttpContext;
 		if (httpContext == null) return "en";
 		if (!httpContext.Request.Headers.TryGetValue(headerName, out StringValues headerValue)) return "en";
