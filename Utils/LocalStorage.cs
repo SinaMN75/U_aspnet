@@ -17,6 +17,6 @@ public static class LocalStorage {
 	}
 
 	public static Task<string?> GetStringData(this IDistributedCache cache, string recordId) => cache.GetStringAsync(recordId);
-	
+
 	public static Task DeleteStringData(this IDistributedCache cache, string recordId) => cache.RemoveAsync(recordId);
 }

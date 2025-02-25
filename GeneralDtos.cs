@@ -19,13 +19,16 @@ public class IdTitleDto {
 	public string? Title { get; set; }
 }
 
-public class BaseFilterDto {
+public class BaseFilterDto : BaseParam {
 	public int PageSize { get; set; } = 100;
 	public int PageNumber { get; set; } = 1;
 	public DateTime? FromDate { get; set; }
 }
 
 public class BaseParam {
+	[Required]
+	public required string ApiKey { get; set; }
+
 	public string? Token { get; set; }
 }
 

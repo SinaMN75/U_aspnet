@@ -50,7 +50,7 @@ public static class AspNetConfig {
 			o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
 			o.EnableRetryOnFailure(5, TimeSpan.FromSeconds(30), null);
 		}));
-		
+
 		builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
 	}
 

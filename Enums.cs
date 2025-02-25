@@ -4,13 +4,13 @@ public enum UStatusCodes {
 	Success = 200,
 	Created = 201,
 	Deleted = 211,
-	
+
 	BadRequest = 400,
 	UnAuthorized = 401,
 	Forbidden = 403,
 	NotFound = 404,
 	Conflict = 409,
-	
+
 	WrongVerificationCode = 601,
 	MaximumLimitReached = 602,
 	UserAlreadyExist = 603,
@@ -28,6 +28,6 @@ public enum UStatusCodes {
 	WrongPassword = 617,
 	InvalidDiscountCode = 618,
 	S3Error = 619,
-	
+
 	Unhandled = 999,
 }
