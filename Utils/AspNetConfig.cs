@@ -15,7 +15,7 @@ using System.Threading.RateLimiting;
 namespace U.Utils;
 
 public static class AspNetConfig {
-	public static void AddUConfigs<T>(this WebApplicationBuilder builder) where T : DbContext {
+	public static void AddUServices<T>(this WebApplicationBuilder builder) where T : DbContext {
 		builder.Logging.ClearProviders();
 		builder.Logging.AddConsole();
 		builder.Logging.SetMinimumLevel(LogLevel.Warning);
