@@ -52,6 +52,7 @@ public static class AspNetConfig {
 		}));
 
 		builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
+		builder.Services.AddSingleton<IJwtService, JwtService>();
 	}
 
 
