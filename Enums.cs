@@ -29,5 +29,5 @@ public enum UStatusCodes {
 	InvalidDiscountCode = 618,
 	S3Error = 619,
 
-	Unhandled = 999,
+	Unhandled = 999
 }

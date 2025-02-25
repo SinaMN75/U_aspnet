@@ -8,16 +8,6 @@ public class Server {
 	private static IHttpContextAccessor? _httpContextAccessor;
 	private static string? _serverAddress;
 
-	public static void Configure(IHttpContextAccessor? accessor) => _httpContextAccessor = accessor;
-
-
-	public static string GetAppLanguage() {
-		HttpContext? httpContext = _httpContextAccessor?.HttpContext;
-		if (httpContext == null) return "en";
-		if (!httpContext.Request.Headers.TryGetValue("locale", out StringValues headerValue)) return "en";
-		return StringValues.IsNullOrEmpty(headerValue) ? "en" : headerValue.ToString();
-	}
-
 	public static string ServerAddress {
 		get {
 			if (_serverAddress != null) return _serverAddress;
@@ -27,12 +17,24 @@ public class Server {
 		}
 	}
 
+	public static void Configure(IHttpContextAccessor? accessor) {
+		_httpContextAccessor = accessor;
+	}
+
+
+	public static string GetAppLanguage() {
+		HttpContext? httpContext = _httpContextAccessor?.HttpContext;
+		if (httpContext == null) return "en";
+		if (!httpContext.Request.Headers.TryGetValue("locale", out StringValues headerValue)) return "en";
+		return StringValues.IsNullOrEmpty(headerValue) ? "en" : headerValue.ToString();
+	}
+
 	public static async Task RunCommand(string command, string args) {
 		Console.WriteLine("COMMAND Started");
 		Console.WriteLine(command);
 		try {
 			Process process = new() {
-				StartInfo = new System.Diagnostics.ProcessStartInfo {
+				StartInfo = new ProcessStartInfo {
 					FileName = command,
 					Arguments = args,
 					RedirectStandardOutput = true,

@@ -16,7 +16,11 @@ public static class LocalStorage {
 		});
 	}
 
-	public static Task<string?> GetStringData(this IDistributedCache cache, string recordId) => cache.GetStringAsync(recordId);
+	public static Task<string?> GetStringData(this IDistributedCache cache, string recordId) {
+		return cache.GetStringAsync(recordId);
+	}
 
-	public static Task DeleteStringData(this IDistributedCache cache, string recordId) => cache.RemoveAsync(recordId);
+	public static Task DeleteStringData(this IDistributedCache cache, string recordId) {
+		return cache.RemoveAsync(recordId);
+	}
 }
