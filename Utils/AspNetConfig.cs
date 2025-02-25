@@ -11,6 +11,7 @@ using Scalar.AspNetCore;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
+using U.Services;
 
 namespace U.Utils;
 
@@ -49,6 +50,8 @@ public static class AspNetConfig {
 			o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
 			o.EnableRetryOnFailure(5, TimeSpan.FromSeconds(30), null);
 		}));
+		
+		builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
 	}
 
 
