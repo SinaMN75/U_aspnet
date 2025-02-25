@@ -10,7 +10,7 @@ public class BaseEntity {
 	public required DateTime UpdatedAt { get; set; }
 }
 
-public class IdDto {
+public class IdDto : BaseParam {
 	public required Guid Id { get; set; }
 }
 
