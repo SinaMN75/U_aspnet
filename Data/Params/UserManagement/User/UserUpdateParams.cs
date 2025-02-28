@@ -19,4 +19,5 @@ public class UserUpdateParams : BaseParam {
 	public DateTime? Birthdate { get; set; }
 	public List<TagUser>? AddTags { get; set; }
 	public List<TagUser>? RemoveTags { get; set; }
+	public IEnumerable<Guid>? Categories { get; set; }
 }

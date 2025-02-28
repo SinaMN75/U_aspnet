@@ -17,4 +17,5 @@ public class UserCreateParams : BaseParam {
 	public string? FcmToken { get; set; }
 	public DateTime? Birthdate { get; set; }
 	public List<TagUser>? Tags { get; set; }
+	public IEnumerable<Guid>? Categories { get; set; }
 }

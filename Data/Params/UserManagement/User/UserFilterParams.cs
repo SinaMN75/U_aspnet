@@ -11,4 +11,5 @@ public class UserFilterParams : BaseFilterDto {
 	public DateTime? StartBirthDate { get; set; }
 	public DateTime? EndBirthDate { get; set; }
 	public List<TagUser>? Tags { get; set; }
+	public IEnumerable<Guid>? Categories { get; set; }
 }

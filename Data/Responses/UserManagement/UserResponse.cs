@@ -12,4 +12,5 @@ public class UserResponse {
 	public string? FcmToken { get; set; }
 	public DateTime? Birthdate { get; set; }
 	public required List<TagUser> Tags { get; set; }
+	public IEnumerable<CategoryResponse>? Categories { get; set; }
 }
