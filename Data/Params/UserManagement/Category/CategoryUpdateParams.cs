@@ -8,6 +8,6 @@ public class CategoryUpdateParams {
 	public string? TitleTr1 { get; set; }
 	public string? TitleTr2 { get; set; }
 	public string? Subtitle { get; set; }
-	public List<TagUser>? AddTags { get; set; }
-	public List<TagUser>? RemoveTags { get; set; }
+	public List<TagCategory>? AddTags { get; set; }
+	public List<TagCategory>? RemoveTags { get; set; }
 }
