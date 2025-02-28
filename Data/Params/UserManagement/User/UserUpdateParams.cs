@@ -1,6 +1,6 @@
 using U.Constants;
 
-namespace U.Data.Params.UserManagement;
+namespace U.Data.Params.UserManagement.User;
 
 public class UserUpdateParams : BaseParam {
 	public required Guid Id { get; set; }
