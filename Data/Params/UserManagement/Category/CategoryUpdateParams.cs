@@ -2,7 +2,7 @@ using U.Constants;
 
 namespace U.Data.Params.UserManagement.Category;
 
-public class CategoryUpdateParams {
+public class CategoryUpdateParams: BaseParam {
 	public required Guid Id { get; set; }
 	public string? Title { get; set; }
 	public string? TitleTr1 { get; set; }
