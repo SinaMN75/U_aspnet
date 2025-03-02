@@ -14,17 +14,18 @@ public class RegisterParams {
 }
 
 public class RegisterParamsValidator : AbstractValidator<RegisterParams> {
-	public RegisterParamsValidator(ILocalizationService localeService) {
+	public RegisterParamsValidator(ILocalizationService l) {
 		RuleFor(x => x.Email)
-			.Must(email => email.IsEmail())
-			.WithMessage(localeService.Get("EmailInvalid"));
+			.NotEmpty().WithMessage(l.Get("EmailRequired"))
+			.EmailAddress().WithMessage(l.Get("EmailInvalid"));
 
 		RuleFor(x => x.Password)
-			.Must(password => password.MinMaxLenght(6, 100))
-			.WithMessage(localeService.Get("PasswordInvalid"));
+			.NotEmpty().WithMessage(l.Get("PasswordRequired"))
+			.MinimumLength(6).WithMessage(l.Get("PasswordMinLength"))
+			.MaximumLength(100).WithMessage(l.Get("PasswordMaxLength"));
 
 		RuleFor(x => x.UserName)
 			.Must(username => username.MinMaxLenght(4, 40))
-			.WithMessage(localeService.Get("UserNameInvalid"));
+			.WithMessage(l.Get("UserNameInvalid"));
 	}
 }
