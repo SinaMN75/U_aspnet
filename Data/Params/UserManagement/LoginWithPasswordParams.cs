@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace U.Data.Params.UserManagement;
 
-public class LoginWithEmailPasswordParams {
+public class LoginWithEmailPasswordParams: BaseParam {
 	[Required]
 	[MinLength(5)]
 	[MaxLength(100)]
