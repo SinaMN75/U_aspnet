@@ -8,3 +8,7 @@ public enum TagUser {
 public enum TagCategory {
 	Category = 100
 }
+
+public enum TagMedia {
+	Image = 100
+}
