@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
-using System.Diagnostics;
-
-namespace U.Utils;
+﻿namespace U.Utils;
 
 public class Server {
 	private static IHttpContextAccessor? _httpContextAccessor;

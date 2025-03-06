@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace U.Data.Params;
 
 public class IdParams : BaseParam {

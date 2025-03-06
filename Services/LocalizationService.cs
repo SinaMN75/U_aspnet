@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Http;
-using System.Text.Json;
-
 namespace U.Services;
 
 public interface ILocalizationService {

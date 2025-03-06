@@ -1,10 +1,3 @@
-using Microsoft.AspNetCore.Http;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using U.Data.Params;
-using U.Data.Responses;
-
 namespace U.Utils;
 
 public static class StringExtension {

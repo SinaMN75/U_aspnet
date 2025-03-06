@@ -1,5 +1,3 @@
-using U.Constants;
-
 namespace U.Data.Responses.UserManagement;
 
 public class UserResponse {

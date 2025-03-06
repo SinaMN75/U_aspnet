@@ -1,18 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Scalar.AspNetCore;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.RateLimiting;
-using U.Middlewares;
-using U.Services;
-
 namespace U.Utils;
 
 public static class AspNetConfig {

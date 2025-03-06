@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Caching.Distributed;
-
 namespace U.Utils;
 
 public static class LocalStorage {

@@ -1,12 +1,6 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.OutputCaching;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace U.Utils;
 
 public static class OutputCache {
-	
 	public static void AddUOutputCache(this WebApplicationBuilder builder) {
 		builder.Services.AddOutputCache(x => x.AddPolicy("default", y => {
 			y.Cache();
@@ -24,7 +18,7 @@ public static class OutputCache {
 			);
 		}));
 	}
-	
+
 	internal class CustomCachePolicy : IOutputCachePolicy {
 		public ValueTask CacheRequestAsync(OutputCacheContext context, CancellationToken cancellation) {
 			context.AllowCacheLookup = true;
@@ -35,7 +29,12 @@ public static class OutputCache {
 			return ValueTask.CompletedTask;
 		}
 
-		public ValueTask ServeFromCacheAsync(OutputCacheContext context, CancellationToken cancellation) => ValueTask.CompletedTask;
-		public ValueTask ServeResponseAsync(OutputCacheContext context, CancellationToken cancellation) => ValueTask.CompletedTask;
+		public ValueTask ServeFromCacheAsync(OutputCacheContext context, CancellationToken cancellation) {
+			return ValueTask.CompletedTask;
+		}
+
+		public ValueTask ServeResponseAsync(OutputCacheContext context, CancellationToken cancellation) {
+			return ValueTask.CompletedTask;
+		}
 	}
 }

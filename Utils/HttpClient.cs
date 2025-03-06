@@ -1,13 +1,8 @@
-using Microsoft.Extensions.Caching.Memory;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
-
 namespace U.Utils;
 
 public class HttpClientService(HttpClient httpClient, IMemoryCache cache) {
-	private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 	private readonly IMemoryCache _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+	private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
 	private async Task<string> Send(
 		HttpMethod method,
@@ -16,16 +11,12 @@ public class HttpClientService(HttpClient httpClient, IMemoryCache cache) {
 		string? customCacheKey = null,
 		TimeSpan? cacheDuration = null,
 		Action<HttpRequestHeaders>? configureHeaders = null) {
-		if (string.IsNullOrEmpty(uri)) {
-			throw new ArgumentException("URI cannot be null or empty.", nameof(uri));
-		}
+		if (string.IsNullOrEmpty(uri)) throw new ArgumentException("URI cannot be null or empty.", nameof(uri));
 
 		string? cacheKey = cacheDuration.HasValue ? customCacheKey ?? $"{method}-{uri}" : null;
-		if (cacheKey != null && _cache.TryGetValue(cacheKey, out string? cachedResponse) && cachedResponse != null) {
-			return cachedResponse;
-		}
+		if (cacheKey != null && _cache.TryGetValue(cacheKey, out string? cachedResponse) && cachedResponse != null) return cachedResponse;
 
-		using HttpRequestMessage request = new HttpRequestMessage(method, uri);
+		using HttpRequestMessage request = new(method, uri);
 		if (body != null) {
 			string json = JsonSerializer.Serialize(body);
 			request.Content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -33,13 +24,11 @@ public class HttpClientService(HttpClient httpClient, IMemoryCache cache) {
 
 		configureHeaders?.Invoke(request.Headers);
 		using HttpResponseMessage response = await _httpClient.SendAsync(request);
-		if (!response.IsSuccessStatusCode) {
-			throw new HttpRequestException($"Request failed with status code {response.StatusCode}");
-		}
+		if (!response.IsSuccessStatusCode) throw new HttpRequestException($"Request failed with status code {response.StatusCode}");
 
 		string responseContent = await response.Content.ReadAsStringAsync();
 		if (!cacheDuration.HasValue || cacheKey == null) return responseContent;
-		MemoryCacheEntryOptions cacheOptions = new MemoryCacheEntryOptions {
+		MemoryCacheEntryOptions cacheOptions = new() {
 			AbsoluteExpirationRelativeToNow = cacheDuration.Value
 		};
 		_cache.Set(cacheKey, responseContent, cacheOptions);

@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace U.Utils;
 
 public static class Encryption {

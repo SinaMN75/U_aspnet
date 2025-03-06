@@ -1,8 +1,3 @@
-using FluentValidation;
-using U.Constants;
-using U.Services;
-using U.Utils;
-
 namespace U.Data.Params.UserManagement;
 
 public class RegisterParams {

@@ -1,6 +1,4 @@
-using U.Constants;
-
-namespace U.Data.Params.UserManagement.User;
+namespace U.Data.Params.UserManagement;
 
 public class UserCreateParams : BaseParam {
 	public required string UserName { get; set; }

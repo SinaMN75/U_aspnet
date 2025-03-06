@@ -1,11 +1,3 @@
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using U.Constants;
-
 namespace U.Services;
 
 public interface IJwtService {
@@ -53,5 +45,7 @@ public class JwtService(IConfiguration config) : IJwtService {
 		}
 	}
 
-	public bool ValidateApiKey(string apiKey) => apiKey == config["ApiKey"];
+	public bool ValidateApiKey(string apiKey) {
+		return apiKey == config["ApiKey"];
+	}
 }

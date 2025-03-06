@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace U.Data.Params.UserManagement;
 
 public class RefreshTokenParams {

@@ -1,9 +1,3 @@
-using FluentValidation;
-using FluentValidation.Results;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using U.Data.Responses;
-
 namespace U.Data.Params;
 
 public class ValidationFilter<T> : IEndpointFilter {
@@ -14,9 +8,9 @@ public class ValidationFilter<T> : IEndpointFilter {
 		T? model = context.Arguments.OfType<T>().FirstOrDefault();
 		if (model is null) return new GenericResponse(UStatusCodes.BadRequest);
 
-		ValidationResult? validationResult = await validator.ValidateAsync(model);
+		FluentValidation.Results.ValidationResult? validationResult = await validator.ValidateAsync(model);
 		if (validationResult.IsValid) return await next(context);
-		ValidationFailure? firstError = validationResult.Errors.FirstOrDefault();
+		FluentValidation.Results.ValidationFailure? firstError = validationResult.Errors.FirstOrDefault();
 		if (firstError != null) return new GenericResponse(UStatusCodes.BadRequest, firstError.ErrorMessage);
 
 		return await next(context);

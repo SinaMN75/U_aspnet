@@ -1,8 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerUI;
-
 namespace U.Utils;
 
 public static class SwaggerSetup {

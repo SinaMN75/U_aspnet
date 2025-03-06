@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Http;
-using System.Text;
-using U.Utils;
-
 namespace U.Middlewares;
 
 public class Base64EncodeMiddleware(RequestDelegate next) {
@@ -24,7 +20,7 @@ public class Base64EncodeMiddleware(RequestDelegate next) {
 public class Base64DecodeMiddleware(RequestDelegate next) {
 	public async Task InvokeAsync(HttpContext context) {
 		if (context.Request.ContentLength > 0) {
-			using StreamReader reader = new StreamReader(context.Request.Body, Encoding.UTF8);
+			using StreamReader reader = new(context.Request.Body, Encoding.UTF8);
 			string base64Body = await reader.ReadToEndAsync();
 
 			try {

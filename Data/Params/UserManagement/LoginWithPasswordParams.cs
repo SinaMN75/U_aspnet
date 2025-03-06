@@ -1,8 +1,3 @@
-using FluentValidation;
-using System.ComponentModel.DataAnnotations;
-using U.Services;
-using U.Utils;
-
 namespace U.Data.Params.UserManagement;
 
 public class LoginWithEmailPasswordParams : BaseParam {
