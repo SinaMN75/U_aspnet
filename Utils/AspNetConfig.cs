@@ -10,6 +10,7 @@ using Scalar.AspNetCore;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
+using U.Middlewares;
 using U.Services;
 
 namespace U.Utils;
@@ -63,5 +64,6 @@ public static class AspNetConfig {
 		app.UseUSwagger();
 		app.UseHttpsRedirection();
 		app.UseRateLimiter();
+		// app.UseMiddleware<ApiKeyMiddleware>();
 	}
 }
