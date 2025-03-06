@@ -20,7 +20,7 @@ public class UserCreateParams : BaseParam {
 	public IEnumerable<Guid>? Categories { get; set; }
 }
 
-public class UserFilterParams : BaseFilterDto {
+public class UserFilterParams : BaseFilterParams {
 	public string? UserName { get; set; }
 	public string? PhoneNumber { get; set; }
 	public string? Email { get; set; }

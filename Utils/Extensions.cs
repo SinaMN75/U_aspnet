@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using U.Data.Params;
+using U.Data.Responses;
 
 namespace U.Utils;
 
@@ -40,9 +42,9 @@ public static class Core {
 }
 
 public static class EnumExtension {
-	public static IEnumerable<IdTitleDto> GetValues<T>() {
+	public static IEnumerable<IdTitleParams> GetValues<T>() {
 		return (from int itemType in Enum.GetValues(typeof(T))
-			select new IdTitleDto { Title = Enum.GetName(typeof(T), itemType), Id = itemType }).ToList();
+			select new IdTitleParams { Title = Enum.GetName(typeof(T), itemType), Id = itemType }).ToList();
 	}
 }
 
