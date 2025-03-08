@@ -33,9 +33,10 @@ public static class AspNetConfig {
 			o.EnableRetryOnFailure(5, TimeSpan.FromSeconds(30), null);
 		}));
 
-		builder.Services.AddHttpClient<HttpClientService>();
-		builder.Services.AddMemoryCache();
 		builder.Services.AddScoped<HttpClientService>();
+		builder.Services.AddHttpClient();
+		builder.Services.AddMemoryCache();
+		builder.Services.AddScoped<IHttpClientRepository, HttpClientRepository>();
 		builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
 		builder.Services.AddSingleton<IJwtService, JwtService>();
 	}
