@@ -15,3 +15,8 @@ public class MediaUpdateParams : BaseParam {
 	public string? Title { get; set; }
 	public string? Description { get; set; }
 }
+
+public class MediaFilterParams : BaseParam {
+	public Guid? UserId { get; set; }
+	public List<TagMedia>? Tags { get; set; }
+}
