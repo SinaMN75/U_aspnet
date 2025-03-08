@@ -7,3 +7,10 @@ public class MediaCreateParams : BaseParam {
 	public string? Title { get; set; }
 	public string? Description { get; set; }
 }
+
+public class MediaUpdateParams : BaseParam {
+	public List<TagMedia>? AddTags { get; set; }
+	public List<TagMedia>? RemoveTags { get; set; }
+	public string? Title { get; set; }
+	public string? Description { get; set; }
+}
