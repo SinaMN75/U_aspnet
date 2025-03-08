@@ -1,6 +1,6 @@
 namespace U.Services;
 
-public interface IHttpClientRepository {
+public interface IHttpClientService {
 	Task<string> Get(
 		string uri,
 		string? customCacheKey = null,
@@ -28,7 +28,7 @@ public interface IHttpClientRepository {
 		Action<HttpRequestHeaders>? configureHeaders = null);
 }
 
-public class HttpClientRepository(HttpClient httpClient, IMemoryCache cache) : IHttpClientRepository {
+public class HttpClientService(HttpClient httpClient, IMemoryCache cache) : IHttpClientService {
 	private readonly IMemoryCache _cache = cache ?? throw new ArgumentNullException(nameof(cache));
 	private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
